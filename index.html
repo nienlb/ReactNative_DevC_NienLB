@@ -1,0 +1,62 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>DOCUMENTS</title>
+</head>
+
+<body>
+  <div id="message"></div>
+  <input type="number" id="number" />
+  <button type="button" id="guessButton"> Guess </button>
+  <button type="reset" id="resetButton"> Reset Game </button>
+  <div>Pass Guesses: <span id="passGuesses"></span> </div>
+
+  <script>
+    let buttonGuesses = document.getElementById('guessButton');
+    let buttonReset = document.getElementById('resetButton')  
+    let message = document.getElementById('message');
+    let guessInput = document.getElementById('number')
+    let result = Math.floor(Math.random() * 10)
+    let passGuesses = document.getElementById('passGuesses')
+    let count = 1
+
+
+    buttonReset.addEventListener('click', function(){
+      passGuesses.innerHTML =''
+      count = 1
+      message.innerHTML = ''
+      result = Math.floor(Math.random() * 10)
+      buttonGuesses.removeAttribute('disabled')
+    })
+    buttonGuesses.addEventListener('click', function () {
+      if (count > 10) { buttonGuesses.setAttribute('disabled','') }
+      else {
+        let guessInputValue = guessInput.value
+        console.log(result)
+        if (guessInputValue < result) {
+          message.innerHTML = `Sorry your guess is too low, guess higher. You have ${10 - count} guesses left`
+          message.style = "color:red"
+          passGuesses.innerHTML += `${guessInputValue}, `
+          count = count + 1
+        }
+        else if (guessInputValue > result) {
+          message.innerHTML = `Sorry your guess is too high, guesses lower. You have ${10 - count} guesses left`
+          message.style = "color:red"
+          passGuesses.innerHTML += `${guessInputValue}, `
+          count = count + 1
+        }
+        else {
+          message.style = "color:green"
+          message.innerHTML = 'Congratulations!! You guessed correctly.'
+          buttonGuesses.setAttribute('disabled','') 
+        }
+      }
+    })
+  </script>
+
+</body>
+
+</html>
