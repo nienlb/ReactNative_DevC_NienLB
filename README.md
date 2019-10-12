@@ -1,7 +1,7 @@
 # ReactNative_Devc
 Repository for assignment in React Native class Devc
 
-### ASSIGMENT WEEK 2
+### ASSIGMENT
 
 ## Install
 
@@ -11,6 +11,8 @@ Repository for assignment in React Native class Devc
 ## Issue 
 
 - Safe area not work in android devices.
+- Layout Week 3 on Android Devices is failed
 
 ## License
 - Copyright (c) MIT
+
